@@ -8,16 +8,23 @@ function bienvenida() {
     let clienteHabitual = localStorage.getItem('usuario')
     let saludoCliente = document.getElementById('usuarioNuevo')
     saludoCliente.innerText = ("Hola de nuevo " + clienteHabitual + "...")
-   
-   
+
 
     if (clienteHabitual) {
+
         nombreCliente = clienteHabitual
-    
+
     } else {
-        nombreCliente = prompt("Hola! Bienvenidx a MONIND-SHOPS \ningresá tu nombre, por favor")
+        swal({
+            title: "Hola! Bienvenidx a MONIND-SHOPS",
+            text: "Por favor, ingresá tu nombre:",
+            content: "input"
+        })
+        nombreCliente = 
         localStorage.setItem('usuario', nombreCliente)
     }
+
+
 }
 
 bienvenida()
@@ -35,16 +42,38 @@ compraMenor.addEventListener("click", condicionesXMenor)
 
 function condicionesXMayor() {
 
-    alert("La compra por mayor tiene las siguientes condiciones: \n - Minimo 10 prendas/articulos por marca \n - Envio a cargo del cliente y transporte a convenir \n ")
+    swal({
+
+        title: "La compra por MAYOR tiene las siguientes condiciones:",
+        text: "-Minimo 10 prendas/articulos por marca \n -Envio a cargo del cliente y transporte a convenir",
+        icon: "info",
+        button: "Comprar x Mayor",
+
+    }
+    );
 }
 
 function condicionesXComision() {
-    
-    alert("La compra por comision tiene las siguientes condiciones: \n - Minimo 20 prendas/articulos (Min 5 x marca) \n - Envio a cargo del cliente y transporte a convenir \n ")
+
+    swal({
+        title: "La compra por COMISION tiene las siguientes condiciones:",
+        text: "- Minimo 20 prendas/articulos (Min 5 x marca) \n - Envio a cargo del cliente y transporte a convenir",
+        icon: "info",
+        button: "Comprar x Comision"
+    });
 }
 
 function condicionesXMenor() {
-    
-    alert("La compra por menor tiene las siguientes condiciones: \n - Sin minimos ni maximos de compra \n - Envio sin cargo para compras mayores a $25000  \n ")
+
+    swal({
+        title: "La compra por MENOR tiene las siguientes condiciones:",
+        text: "La compra por MENOR tiene las siguientes condiciones: \n - Sin minimos ni maximos de compra \n - Envio sin cargo para compras mayores a $25000",
+        icon: "info",
+        button: "Comprar x Menor"
+
+    }
+    )
+
+
 }
 

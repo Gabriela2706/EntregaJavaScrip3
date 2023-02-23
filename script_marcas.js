@@ -45,44 +45,45 @@ const shortLasLocas03 = new LasLocas("Short", "ShLoca03", "Verano 2021", "Gris",
 const polleraLasLocas01 = new LasLocas("Pollera", "PoLoca01", "Verano 2022", "Lunares", "Modal y Algodon", false)
 const polleraLasLocas02 = new LasLocas("Pollera", "PoLoca02", "Verano 2022", "Verde Manzana", "Gabardina", false)
 
-//ARRAY CON TODOS LOS MODELOS DE LA MARCA.
+//ARRAY DE OBJETOS CON TODOS LOS MODELOS DE LAS MARCAS.
 const modelosNissie = [jeanNissie01, jeanNissie02, jeanNissie03, shortNissie01, shortNissie02, shortNissie03, polleraNissie01, polleraNissie02]
 const modelosLasLocas = [jeanLasLocas01, jeanLasLocas02, jeanLasLocas03, shortLasLocas01, shortLasLocas02, shortLasLocas03, polleraLasLocas01, polleraLasLocas02]
+
 //ME TRAIGO EL ELEMENTO A TRABAJAR (DOM)
 
 let dbClickLocas = document.getElementById('dbClickLocas')
 let dbClickNissie = document.getElementById('dbClickNissie')
 
-//SE HACE CLICK EN LA PALABRA NISSIE Y SE OBSERVA POR CONSOLA EL LISTADO DE MODELOS QUE HAY DISPONIBLE
+//SI HACE CLICK EN LA PALABRA NISSIE O LAS LOCAS SE OBSERVA POR CONSOLA EL LISTADO DE MODELOS QUE HAY DISPONIBLE
 
 
-dbClickLocas.addEventListener("dblclick", stockXConsola)
-dbClickNissie.addEventListener("dblclick", stockXConsola)
+dbClickLocas.addEventListener("dblclick", stockXConsolaLasLocas)
+dbClickNissie.addEventListener("dblclick", stockXconsolaNissie)
 
-function stockXConsola(dbClickLocas, dbClickNissie) {
+function stockXConsolaLasLocas() {
 
-    switch (dbClickLocas, dbClickNissie) {
+    if (dbClickLocas) {
+        for (const propiedades in modelosLasLocas) {
+            console.log(modelosLasLocas[propiedades])
+        }
+    }
+}
 
-        case dbClickNissie:
-            for (const propiedades in modelosNissie) {
-                console.log(modelosNissie[propiedades])
-            }
-            break;
+function stockXconsolaNissie() {
 
-        case dbClickLocas:
-            for (const propiedades in modelosLasLocas) {
-                console.log(modelosLasLocas[propiedades])
-            }
-            break;
-
-
+    if (dbClickNissie) {
+        for (const propiedades in modelosNissie) {
+            console.log(modelosNissie[propiedades])
+        }
     }
 }
 
 
+
 //--------
 //ME TRAIGO EL ELEMENTO A TRABAJAR (DOM)
-let botonNissie = document.getElementById("listadoNissie")
+
+
 let botonLasLocas = document.getElementById("listadoLasLocas")
 let botonLunette = document.getElementById("listadoLunette")
 let botonGocco = document.getElementById("listadoGocco")
@@ -90,9 +91,7 @@ let botonGocco = document.getElementById("listadoGocco")
 //Si aprieto con un click en alguna marca aparece el listado de los nombres disponibles de esa marca.
 //Creo el evento con "click"
 
-botonNissie.addEventListener("click", function () {
-    listarStock(botonNissie);
-});
+
 botonLasLocas.addEventListener("click", function () {
     listarStock(botonLasLocas);
 });
@@ -123,6 +122,58 @@ function listarStock(listado) {
 
     }
 }
-listarStock()
+// listarStock()
 
 
+const pantalones = [
+    {
+        id: "1",
+        clasificacion: "Jean",
+        nombre: "Electra",
+        descripcion: "$6950",
+        talles: "36 al 46",
+        cantidad: "3",
+        img: '/multimedia/laslocas1.jpg',
+    },
+
+    {
+        id: "2",
+        clasificacion: "Jean",
+        nombre: "Electra",
+        descripcion: "$6950",
+        talles: "36 al 46",
+        cantidad: "3",
+        img: '/multimedia/laslocas2.jpg'
+    },
+
+
+]
+
+
+const botonNissie = document.getElementById('listadoNissie')
+botonNissie.addEventListener("click", pintarProductros);
+
+function pintarProductros() {
+    
+    pantalones.forEach((pantalon) => {
+        const div = document.createElement('div')
+        div.classList.add('card')
+        div.innerHTML += `
+        <div class="card-image">
+            <img src="${pantalon.img}" alt="Foto jean Electra">
+            <span class="card-title">${pantalon.nombre}</span>
+        </div>
+        <div class="card-content">
+            <p>${pantalon.descripcion}</p>
+            <p>${pantalon.talles}</p>
+            <p>${pantalon.id}</p>
+        </div>
+      
+        `
+        botonNissie.appendChild(div)
+
+    })
+}
+    
+
+pintarProductros()
