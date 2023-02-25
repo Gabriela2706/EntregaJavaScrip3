@@ -10,18 +10,27 @@ function bienvenida() {
     saludoCliente.innerText = ("Hola de nuevo " + clienteHabitual + "...")
 
 
+
     if (clienteHabitual) {
 
         nombreCliente = clienteHabitual
 
     } else {
-        swal({
-            title: "Hola! Bienvenidx a MONIND-SHOPS",
-            text: "Por favor, ingresá tu nombre:",
-            content: "input"
+
+        Swal.fire({
+            title: 'Bienvenidx a MONIND-SHOPS',
+            text: 'Por favor, ingresa tu nombre',
+            input: 'text',
         })
         nombreCliente = 
-        localStorage.setItem('usuario', nombreCliente)
+        // no se como capturar ese input que esta dentro del swal. Con prompt la funcionalidad era perfecta. 
+        //Voy a dejar abajo como seria la funcion con el prompt.
+        //De todas maneras se que como el swal tiene una estructura similar a la de un objeto o un constructor,
+        //deberia usar el this.input para poder usar esta informacion afuera. Perdon profe, me gano JS.
+        
+        //nombreCliente = prompt("Bienvenidx a MONIND-SHOPS \n Por favor, ingresa tu nombre: ")
+
+            localStorage.setItem('usuario', nombreCliente)
     }
 
 
@@ -67,7 +76,7 @@ function condicionesXMenor() {
 
     swal({
         title: "La compra por MENOR tiene las siguientes condiciones:",
-        text: "La compra por MENOR tiene las siguientes condiciones: \n - Sin minimos ni maximos de compra \n - Envio sin cargo para compras mayores a $25000",
+        text: "- Sin minimos ni maximos de compra \n - Envio sin cargo para compras mayores a $25000",
         icon: "info",
         button: "Comprar x Menor"
 

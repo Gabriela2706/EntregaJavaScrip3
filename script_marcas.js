@@ -1,27 +1,29 @@
-
 // OBJETO CONSTRUCTOR + DOM + EVENTOS DOBLECLICK EN PAGINA "MARCAS"
+//CONSTRUCTOR
 
 class Nissie {
-    constructor(clasificacion, nombre, temporada, color, material, oferta) {
+    constructor(id, clasificacion, nombre, temporada, color, material, oferta, img) {
 
+        this.id = id,
         this.clasificacion = clasificacion;
         this.nombre = nombre;
         this.temporada = temporada;
         this.color = color;
         this.material = material;
         this.oferta = oferta;
+        this.img = img;
 
     }
 }
 
-const jeanNissie01 = new Nissie("Jean", "Electra", "Verano 2022", "Blanco", "Jean liso", false)
-const jeanNissie02 = new Nissie("Jean", "Cleo", "Verano 2022", "Azul Francia", "Jean batik", false)
-const jeanNissie03 = new Nissie("Jean", "Alexa", "Verano 2022", "Celeste", "Jean veteado", false)
-const shortNissie01 = new Nissie("Short", "Minnie", "Verano 2022", "Blanco", "Gabardina elastizada", false)
-const shortNissie02 = new Nissie("Short", "Malibu", "Verano 2022", "Negro", "Gabardina", true)
-const shortNissie03 = new Nissie("Short", "Regina", "Verano 2021", "Gris", "jean liso", true)
-const polleraNissie01 = new Nissie("Pollera", "Flora", "Verano 2022", "Lunares", "Modal y Algodon", false)
-const polleraNissie02 = new Nissie("Pollera", "Pola", "Verano 2022", "Verde Manzana", "Gabardina", false)
+const jeanNissie01 = new Nissie("1","Jean", "Electra", "Verano 2022", "Blanco", "Jean liso", false, './../multimedia/nissie_electra_jean.jpg')
+const jeanNissie02 = new Nissie("2","Jean", "Cleo", "Verano 2022", "Azul Francia", "Jean batik", false, './../multimedia/nissie_cleo_jean.jpg')
+const jeanNissie03 = new Nissie("3","Jean", "Alexa", "Verano 2022", "Celeste", "Jean veteado", false, './../multimedia/nissie_alexa_jean.jpg')
+const shortNissie01 = new Nissie("4","Short", "Minnie", "Verano 2022", "Blanco", "Gabardina elastizada", false, './../multimedia/nissie_minnie_short.jpg')
+const shortNissie02 = new Nissie("5","Short", "Malibu", "Verano 2022", "Negro", "Gabardina", true, './../multimedia/nissie_malibu_short.jpg')
+const shortNissie03 = new Nissie("6","Short", "Regina", "Verano 2021", "Gris", "jean liso", true, './../multimedia/nissie_regina_short.jpg')
+const polleraNissie01 = new Nissie("7","Pollera", "Flora", "Verano 2022", "Lunares", "Modal y Algodon", false, './../multimedia/nissie_flora_pollera.jpg')
+const polleraNissie02 = new Nissie("8","Pollera", "Pola", "Verano 2022", "Verde Manzana", "Gabardina", false,'./../multimedia/nissie_pola_pollera.jpg')
 
 class LasLocas {
     constructor(clasificacion, nombre, temporada, color, material, oferta) {
@@ -102,78 +104,3 @@ botonGocco.addEventListener("click", function () {
     listarStock(botonGocco);
 });
 
-
-function listarStock(listado) {
-
-
-    switch (listado) {
-        case botonNissie:
-            botonNissie.innerHTML = ("Stock Disponible Nissie: " + " <br> " + jeanNissie01.clasificacion + " " + jeanNissie01.nombre + "<br>" + jeanNissie02.clasificacion + " " + jeanNissie02.nombre + "<br>" + jeanNissie03.clasificacion + " " + jeanNissie03.nombre + "<br>" + shortNissie01.clasificacion + " " + shortNissie01.nombre + "<br>" + shortNissie02.clasificacion + " " + shortNissie02.nombre + "<br>" + shortNissie03.clasificacion + " " + shortNissie03.nombre + "<br>" + polleraNissie01.clasificacion + " " + polleraNissie01.nombre + "<br>" + polleraNissie02.clasificacion + " " + polleraNissie02.nombre)
-            break;
-        case botonLasLocas:
-            botonLasLocas.innerHTML = ("Stock Disponible Nissie: " + "<br>" + jeanLasLocas01.clasificacion + " " + jeanLasLocas01.nombre + "<br>" + jeanLasLocas02.clasificacion + " " + jeanLasLocas02.nombre + "<br>" + jeanLasLocas03.clasificacion + " " + jeanLasLocas03.nombre + "<br>" + shortLasLocas01.clasificacion + " " + shortLasLocas01.nombre + "<br>" + shortLasLocas02.clasificacion + " " + shortLasLocas02.nombre + "<br>" + shortLasLocas03.clasificacion + " " + shortLasLocas03.nombre + "<br>" + polleraLasLocas01.clasificacion + " " + polleraLasLocas02.nombre + "<br>" + polleraLasLocas02.clasificacion + " " + polleraLasLocas02.nombre)
-            break;
-        case botonLunette:
-            botonLunette.innerHTML = ("Stock Disponible Nissie: " + "<br>" + jeanNissie01.clasificacion + jeanNissie01.nombre)
-            break;
-        case botonGocco:
-            botonGocco.innerHTML = ("Stock Disponible Nissie: " + "<br>" + jeanNissie01.clasificacion + jeanNissie01.nombre)
-            break;
-
-    }
-}
-// listarStock()
-
-
-const pantalones = [
-    {
-        id: "1",
-        clasificacion: "Jean",
-        nombre: "Electra",
-        descripcion: "$6950",
-        talles: "36 al 46",
-        cantidad: "3",
-        img: '/multimedia/laslocas1.jpg',
-    },
-
-    {
-        id: "2",
-        clasificacion: "Jean",
-        nombre: "Electra",
-        descripcion: "$6950",
-        talles: "36 al 46",
-        cantidad: "3",
-        img: '/multimedia/laslocas2.jpg'
-    },
-
-
-]
-
-
-const botonNissie = document.getElementById('listadoNissie')
-botonNissie.addEventListener("click", pintarProductros);
-
-function pintarProductros() {
-    
-    pantalones.forEach((pantalon) => {
-        const div = document.createElement('div')
-        div.classList.add('card')
-        div.innerHTML += `
-        <div class="card-image">
-            <img src="${pantalon.img}" alt="Foto jean Electra">
-            <span class="card-title">${pantalon.nombre}</span>
-        </div>
-        <div class="card-content">
-            <p>${pantalon.descripcion}</p>
-            <p>${pantalon.talles}</p>
-            <p>${pantalon.id}</p>
-        </div>
-      
-        `
-        botonNissie.appendChild(div)
-
-    })
-}
-    
-
-pintarProductros()
